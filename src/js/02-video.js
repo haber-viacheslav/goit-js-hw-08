@@ -5,7 +5,9 @@ const iframeVideoplayer = document.querySelector('#vimeo-player');
 const player = new Player(iframeVideoplayer);
 const CURRENT_TIME = 'videoplayer-current-time';
 
-player.setCurrentTime(localStorage.getItem(CURRENT_TIME));
+if (localStorage.getItem(CURRENT_TIME)) {
+  player.setCurrentTime(localStorage.getItem(CURRENT_TIME));
+}
 
 player.on('timeupdate', throttle(onUpdateTime, 1000));
 
